@@ -90,7 +90,7 @@ uv run python dare.py \
 #### Basic Example
 
 ```python
-from main import DareMerger, DareConfig
+from dare import DareMerger, DareConfig
 
 # Configure DARE parameters
 config = DareConfig(
