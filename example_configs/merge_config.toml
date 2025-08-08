@@ -1,0 +1,43 @@
+# DARE Model Merger Configuration File
+# Example configuration for merging language models
+
+[dare]
+# Proportion of delta parameters to drop (0.0 to 1.0)
+# Higher values = more aggressive pruning but potentially better merging
+drop_rate = 0.9
+
+# Warning threshold for large delta parameters
+# Models with deltas above this threshold may not merge well
+delta_threshold = 0.002
+
+# Enable verbose output during merging
+verbose = true
+
+[models]
+# Base model (typically the original pre-trained model)
+base_file = "models/base_model.safetensors"
+
+# List of fine-tuned models to merge
+# These should all be based on the same base model
+merge_files = [
+    "models/math_tuned_model.safetensors",
+    "models/code_tuned_model.safetensors",
+    "models/instruction_tuned_model.safetensors"
+]
+
+# Output file for the merged model
+output_file = "merged_model.safetensors"
+
+# Alternative configuration examples:
+
+# [dare]
+# # More aggressive pruning (99% parameter dropping)
+# drop_rate = 0.99
+# delta_threshold = 0.001
+# verbose = false
+
+# [models]
+# # Merge just two models
+# base_file = "llama2-7b.safetensors"
+# merge_files = ["wizardmath-7b.safetensors", "wizardcoder-7b.safetensors"]
+# output_file = "math_code_merged.safetensors"
